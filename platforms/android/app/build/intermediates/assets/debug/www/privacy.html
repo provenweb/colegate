@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang-"en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+	<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Colegate Primary School - Privacy</title>
+    <link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+    <script src="js/jquery-1.6.4.min.js"></script>
+    <script src="js/jquery.actual.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/iscroll-watusi.js"></script>
+    <script src="js/jquery.mobile.iscrollview.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+
+  </head>
+
+  <body>
+    <div id="privacyPage" data-role="page" data-dom-cache="true">
+
+      <div data-role="header" data-theme="b" data-position="fixed">
+        <h1>Privacy</h1>
+        <a href="index.html" data-prefetch data-theme="a" data-transition="none" data-icon="home" class="ui-btn-left">Home</a>
+      </div>
+
+      <div data-role="content" data-iscroll>
+        <div id="privacypolicy"></div>
+        <div class="clear"></div>
+      </div>
+
+	  <script type="text/javascript">
+
+		$("#privacyPage").live('pageinit', function() {
+			var url = "http://api.colegateprimary.org/mobile/api/privacy.php";
+			$.getJSON(url, function(json) {
+				for(var i=0;i<json.items.length;i++){
+					var node = document.createElement('div');
+					node.innerHTML = json.items[i].html;
+					document.getElementById("privacypolicy").appendChild(node);
+					setTimeout("adjustHeights('privacyPage');",500);
+					setTimeout("$(window).trigger('resize');",600);
+				}
+			});
+		});
+		$("#privacyPage").live('pageshow', function() {
+			adjustHeights('privacyPage');
+			$(".ui-page-active div.ui-content").iscrollview();
+		});
+	</script>
+    </div>
+  </body>
+</html>
