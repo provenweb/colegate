@@ -65,7 +65,7 @@
 		});
 
 		var taglist = {};
-		var url = "http://api.colegateprimary.org/mobile/api/getallcategories.php";
+		var url = "https://api.colegateprimary.org/mobile/api/getallcategories.php";
 		$.getJSON(url, function(json) {
 			for(var i=0;i<json.items.length;i++){
 				var node = document.createElement('div');

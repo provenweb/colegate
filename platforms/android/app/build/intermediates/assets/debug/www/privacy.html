@@ -34,7 +34,7 @@
 	  <script type="text/javascript">
 
 		$("#privacyPage").live('pageinit', function() {
-			var url = "http://api.colegateprimary.org/mobile/api/privacy.php";
+			var url = "https://api.colegateprimary.org/mobile/api/privacy.php";
 			$.getJSON(url, function(json) {
 				for(var i=0;i<json.items.length;i++){
 					var node = document.createElement('div');

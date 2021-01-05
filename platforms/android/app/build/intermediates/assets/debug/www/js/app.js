@@ -1,4 +1,4 @@
-var siteURL = "http://api.colegateprimary.org";
+var siteURL = "https://api.colegateprimary.org";
 var apiPath = "/mobile/api/";
 var postPath = "/news/age/";
 var latestPath = "/latest/";
